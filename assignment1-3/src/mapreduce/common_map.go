@@ -17,6 +17,7 @@ func doMap(
 	nReduce int, // the number of reduce task that will be run ("R" in the paper)
 	mapF func(file string, contents string) []KeyValue,
 ) {
+
 	// TODO:
 	// You will need to write this function.
 	// You can find the filename for this map task's input to reduce task number
@@ -48,6 +49,7 @@ func doMap(
 	file, err := ioutil.ReadFile(inFile)
 	checkError(err)
 	keyValues := mapF(inFile, string(file))
+
 	encoders := make(map[string]*json.Encoder)
 	for i := 0; i < nReduce; i++ {
 		fileName := reduceName(jobName, mapTaskNumber, i)
@@ -58,6 +60,7 @@ func doMap(
 		enc := json.NewEncoder(writeFile)
 		encoders[fileName] = enc
 	}
+
 	for _, kv := range keyValues {
 		fileID := ihash(kv.Key) % uint32(nReduce)
 		fileName := reduceName(jobName, mapTaskNumber, int(fileID))

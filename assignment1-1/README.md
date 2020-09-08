@@ -10,6 +10,7 @@
   <a href="https://golang.org/doc/install">installing Go</a> on your machine.
 </p>
   <!-- In this class we will use the latest stable version 1.9.  -->
+
 <h2>Software</h2>
 <p>
   You will find the code the same directory. The two problems that you need to solve are in <tt>q1.go</tt>

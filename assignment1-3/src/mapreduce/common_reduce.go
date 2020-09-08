@@ -47,6 +47,7 @@ func doReduce(
 		interFile, err := os.Open(fileName)
 		checkError(err)
 		defer interFile.Close()
+
 		dec := json.NewDecoder(interFile)
 		for {
 			var keyVal KeyValue
